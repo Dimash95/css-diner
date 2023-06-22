@@ -1,0 +1,9 @@
+@import './components/blog-1/blog-1.css';
+@import './components/blog-2/blog-2.css';
+@import './components/blog-3/blog-3.css';
+@import './components/blog-4/blog-4.css';
+
+body {
+  background-color: rgb(31, 31, 31);
+  color: bisque;
+}
