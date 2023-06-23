@@ -4,6 +4,31 @@
 @import './components/blog-4/blog-4.css';
 
 body {
-  background-color: rgb(31, 31, 31);
   color: bisque;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(73, 46, 46);
+  width: 75vw;
+}
+
+
+
+footer {
+  width: 75vw;
+  background-color: rgb(73, 46, 46);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
 }

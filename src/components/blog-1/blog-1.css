@@ -1,0 +1,20 @@
+.block-one {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.block-one__title {
+  font-size: 35px;
+}
+
+.block-one__help {
+  font-size: 20px;
+}
+
+.block-one__table {
+  background-color: goldenrod;
+  height: 120px;
+  width: 350px;
+}

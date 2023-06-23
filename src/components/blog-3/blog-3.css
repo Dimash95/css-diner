@@ -1,0 +1,33 @@
+.block-three {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+}
+
+.block-three__title {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(50, 49, 49);
+}
+
+.block-three__code {
+  display: flex;
+}
+
+.block-three__code__numbers {
+  text-align: end;
+  padding: 10px;
+  background-color: rgb(38, 38, 39);
+  border: 0.2px solid white;
+  border-color: rgb(122, 122, 122);
+  color: rgb(122, 122, 122);
+}
+.block-three__code__content {
+  padding: 10px;
+  width: 100%;
+  background-color: rgb(38, 38, 39);
+  border: 1px solid white;
+  border-color: rgb(122, 122, 122);
+  color: rgb(122, 122, 122);
+  margin: 0;
+}
