@@ -10,7 +10,7 @@
     <div class="container">
       <main>
         <section class="block-one">
-          <h1 class="block-one__title">Select the plates</h1>
+          <h1 class="block-one__title"></h1>
           <p class="block-one__help">Help</p>
           <div class="block-one__table"></div>
         </section>
@@ -44,10 +44,15 @@
                 19<br />
                 20<br />
               </div>
-              <p class="block-two__code__content">
-                <code class="block-two__code__content__css"></code>
+              <div class="block-two__code__content">
+                <div>
+                  <input class="code__content__input" type="text" placeholder="Type in a CSS selector enter" />
+                  <p class="code__content__text">{</p>
+                  <p class="code__content__text">/* Styles would go here. */</p>
+                  <p class="code__content__text">}</p>
+                </div>
                 <button class="code__content__enter">Enter</button>
-              </p>
+              </div>
             </div>
           </section>
           <section class="block-three">
@@ -78,9 +83,10 @@
                 19<br />
                 20<br />
               </div>
-              <p class="block-three__code__content">
-                <code class="block-three__code__content__html"></code>
-              </p>
+              <div class="block-three__code__content">
+                <p>&lt;div class="table"&gt;</p>
+                <p>&lt;/div&gt;</p>
+              </div>
             </div>
           </section>
         </div>
@@ -103,7 +109,17 @@
           <button class="lvl__number">10</button>
         </div>
 
-        <div class="aside__task"></div>
+        <div class="taskDescription">
+          <h3 class="selector-name"></h3>
+          <h4 class="help-title"></h4>
+          <h2 class="syntax tag-highlight"></h2>
+          <p class="help"></p>
+          <div>
+            <hr>
+            <h4>Example</h4>
+            <p class="example-content"></p>
+          </div>
+        </div>
 
         <button class="btn-new-game">Начать заново</button>
       </aside>

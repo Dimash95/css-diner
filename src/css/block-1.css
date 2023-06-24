@@ -1,0 +1,75 @@
+.block-one {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.block-one__title {
+  font-size: 35px;
+}
+
+.block-one__help {
+  font-size: 20px;
+}
+
+.block-one__table {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: goldenrod;
+  height: 120px;
+  width: 350px;
+}
+
+.block-one__help {
+  cursor: pointer;
+}
+
+.block-one__help:hover {
+  opacity: 0.8;
+}
+.block-one__help:active {
+  opacity: 1.5;
+}
+
+.focus {
+  padding: 5px 10px;
+}
+
+.animation {
+  -webkit-animation: pulsing 2s infinite;
+  animation: pulsing 2s infinite;
+}
+/* Code was taken from: */
+/* https://stfalcon.com/ru/blog/post/animation-css */
+
+@-webkit-keyframes pulsing {
+  0% {
+    -webkit-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5);
+  }
+  50% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  100% {
+    -webkit-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5);
+  }
+}
+
+@keyframes pulsing {
+  0% {
+    -webkit-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5);
+  }
+  50% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  100% {
+    -webkit-transform: scale(0.5, 0.5);
+    transform: scale(0.5, 0.5);
+  }
+}
