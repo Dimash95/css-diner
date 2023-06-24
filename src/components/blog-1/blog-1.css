@@ -14,7 +14,25 @@
 }
 
 .block-one__table {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   background-color: goldenrod;
   height: 120px;
   width: 350px;
+}
+
+.block-one__help {
+  cursor: pointer;
+}
+
+.block-one__help:hover {
+  opacity: 0.8;
+}
+.block-one__help:active {
+  opacity: 1.5;
+}
+
+.focus {
+  padding: 5px 10px;
 }

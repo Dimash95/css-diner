@@ -1,0 +1,19 @@
+.plate {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: aliceblue;
+  transition: 0.4s;
+}
+
+.plate:hover {
+  background-color: lightgray;
+}
+
+.hover {
+  background-color: lightgray;
+}
+
+.input__animation {
+  background-color: lightgray;
+}

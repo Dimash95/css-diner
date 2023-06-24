@@ -18,7 +18,7 @@
   text-align: end;
   padding: 10px;
   background-color: rgb(38, 38, 39);
-  border: 0.2px solid white;
+  border: 0.2px solid aliceblue;
   border-color: rgb(122, 122, 122);
   color: rgb(122, 122, 122);
 }
@@ -26,7 +26,9 @@
   padding: 10px;
   width: 100%;
   background-color: rgb(38, 38, 39);
-  border: 1px solid white;
+  border-top: 1px solid aliceblue;
+  border-right: 1px solid aliceblue;
+  border-bottom: 1px solid aliceblue;
   border-color: rgb(122, 122, 122);
   color: rgb(122, 122, 122);
   margin: 0;

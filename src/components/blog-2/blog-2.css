@@ -26,9 +26,10 @@
 }
 
 .block-two__code__content {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   padding: 14px;
-
   background-color: aliceblue;
   color: black;
   margin: 0;
@@ -49,4 +50,9 @@
 :focus {
   outline: 0;
   outline-offset: 0;
+}
+
+.code__content__enter {
+  cursor: pointer;
+  height: 30px;
 }

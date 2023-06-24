@@ -10,7 +10,16 @@
 
 .block-four__title-box {
   display: flex;
-  justify-content: space-evenly;
+  gap: 10px;
+}
+
+.lvl__number {
+  cursor: pointer;
+  background-color: bisque;
+}
+
+.lvl__number:hover {
+  opacity: 0.9;
 }
 
 .btn {
@@ -25,4 +34,15 @@
   display: inline-block;
   border: 1px solid gray;
   padding: 2px 3px;
+}
+
+.btn-new-game {
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 18px;
+  background-color: bisque;
+}
+
+.btn-new-game:hover {
+  opacity: 0.9;
 }

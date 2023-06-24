@@ -45,15 +45,8 @@
                 20<br />
               </div>
               <p class="block-two__code__content">
-                <code>
-                  <input class="code__content__input" placeholder="Type in a CSS selector enter" /><br />
-                  {<br />
-                  /* Styles would go here. */<br />
-                  }<br />
-                  /* <br />Type a number to skip to a level.<br />
-                  Ex → "5" for level 5<br />
-                  */
-                </code>
+                <code class="block-two__code__content__css"></code>
+                <button class="code__content__enter">Enter</button>
               </p>
             </div>
           </section>
@@ -86,12 +79,7 @@
                 20<br />
               </div>
               <p class="block-three__code__content">
-                <code>
-                  &lt;div class="table"&gt;<br />
-                  &lt;plate /&gt;<br />
-                  &lt;plate /&gt;<br />
-                  &lt;/div&gt;
-                </code>
+                <code class="block-three__code__content__html"></code>
               </p>
             </div>
           </section>
@@ -100,28 +88,29 @@
       <aside class="block-four">
         <div class="block-four__title-box">
           <h2>Level 1 of 10</h2>
-          <img src="./assets/img/black-icon.png" width="50" height="50" alt="black-icon" />
-          <button class="prev-level btn"><</button>
-          <button class="next-level btn">></button>
+          <img class="block-four__icon" src="./assets/img/black-icon.png" width="50" height="50" alt="icon" />
+        </div>
+        <div class="block-four__lvl">
+          <button class="lvl__number">1</button>
+          <button class="lvl__number">2</button>
+          <button class="lvl__number">3</button>
+          <button class="lvl__number">4</button>
+          <button class="lvl__number">5</button>
+          <button class="lvl__number">6</button>
+          <button class="lvl__number">7</button>
+          <button class="lvl__number">8</button>
+          <button class="lvl__number">9</button>
+          <button class="lvl__number">10</button>
         </div>
 
-        <h3>Type Selector</h3>
-        <h4>Select elements by their type</h4>
-        <h2 class="tag-highlight">A</h2>
-        <p>
-          Selects all elements of type <span class="tag-highlight">A</span>. Type refers to the type of tag, so <span class="tag-highlight">&lt;div&gt;</span>,
-          <span class="tag-highlight">&lt;p&gt;</span> and <span class="tag-highlight">&lt;ul&gt;</span> are all different element types.
-        </p>
-        <div>
-          <h4>Examples</h4>
-          <p><span class="tag-highlight">p</span> selects all <span class="tag-highlight">p</span> elements.</p>
-          <p><span class="tag-highlight">div</span> selects all <span class="tag-highlight">div</span> elements.</p>
-        </div>
+        <div class="aside__task"></div>
+
+        <button class="btn-new-game">Начать заново</button>
       </aside>
     </div>
 
     <footer>
-      <p>Made by Dimash. Githab: https://github.com/Dimash95/</p>
+      <p>The app made by Dimash. Githab: https://github.com/Dimash95/</p>
       <p>JavaScript/Front-end Course RSS: https://rs.school/js/</p>
     </footer>
   </body>
