@@ -19,7 +19,7 @@
   align-items: center;
   background-color: goldenrod;
   height: 120px;
-  width: 350px;
+  width: 400px;
 }
 
 .block-one__help {
@@ -37,10 +37,11 @@
   padding: 5px 10px;
 }
 
-.animation {
+.animation-pulsing {
   -webkit-animation: pulsing 2s infinite;
   animation: pulsing 2s infinite;
 }
+
 /* Code was taken from: */
 /* https://stfalcon.com/ru/blog/post/animation-css */
 

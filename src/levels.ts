@@ -8,9 +8,13 @@ export const taskLevels = [
     help: 'Selects all elements of type <tag>A</tag>. Type refers to the type of tag, so <tag>div</tag>, <tag>p</tag> and <tag>ul</tag> are all different element types.',
     example: '<strong>div</strong> selects all <tag>div</tag> elements.',
     boardMarkup: `
-    <plate/>
-    <plate/>
-    `,
+  <plate/>
+  <plate/>
+  `,
+    pictures: `
+  <div class="plate animation-pulsing"></div>
+  <div class="plate animation-pulsing"></div>
+  `,
   },
   {
     doThis: 'Select the bento boxes',
@@ -21,9 +25,14 @@ export const taskLevels = [
     help: 'Selects all elements of type <strong>A</strong>. Type refers to the type of tag, so <tag>div</tag>, <tag>p</tag> and <tag>ul</tag> are all different element types.',
     example: '<strong>div</strong> selects all <tag>div</tag> elements.',
     boardMarkup: `
-    <bento/>
-    <plate/>
-    <bento/>
+  <bento/>
+  <plate/>
+  <bento/>
+  `,
+    pictures: `
+    <div class="bento animation-pulsing"></div>
+    <div class="plate"></div>
+    <div class="bento animation-pulsing"></div>
     `,
   },
   {
@@ -35,10 +44,15 @@ export const taskLevels = [
     help: 'Selects the element with a specific <strong>id</strong>. You can also combine the ID selector with the type selector.',
     example: '<strong>#cool</strong> selects any element with <strong>id="cool"</strong>',
     boardMarkup: `
-    <plate id="fancy"/>
-    <plate/>
-    <bento/>
-    `,
+  <plate id="fancy"/>
+  <plate/>
+  <bento/>
+  `,
+    pictures: `
+  <div class="fancy animation-pulsing"></div>
+  <div class="plate"></div>
+  <div class="bento"></div>
+  `,
   },
   {
     helpTitle: 'Select an element inside another element',
@@ -50,12 +64,17 @@ export const taskLevels = [
     example:
       '<strong>p&nbsp;&nbsp;strong</strong> selects all <tag>strong</tag> elements that are inside of any <tag>p</tag>',
     boardMarkup: `
-    <bento/>
-    <plate>
-      <apple/>
-    </plate>
+  <bento/>
+  <plate>
     <apple/>
-    `,
+  </plate>
+  <apple/>
+  `,
+    pictures: `
+  <div class="bento"></div>
+  <div class="plate"><div class="apple animation-pulsing"></div></div>
+  <div class="apple"></div>
+  `,
   },
   {
     doThis: 'Select the pickle on the fancy plate',
@@ -67,16 +86,21 @@ export const taskLevels = [
     example:
       '<strong>#cool&nbsp;span</strong> selects all <tag>span</tag> elements that are inside of elements with <strong>id="cool"</strong>',
     boardMarkup: `
-    <bento>
+  </bento>
     <orange/>
-    </bento>
-    <plate id="fancy">
-      <pickle/>
-    </plate>
-    <plate>
-      <pickle/>
-    </plate>
-    `,
+  <bento>
+  <plate id="fancy">
+    <pickle/>
+  </plate>
+  <plate>
+    <pickle/>
+  </plate>
+  `,
+    pictures: `
+  <div class="bento"><div class="egg"></div></div>
+  <div class="fancy"><div class="pickle animation-pulsing"></div></div>
+  <div class="plate"><div class="pickle"></div></div>
+  `,
   },
   {
     doThis: 'Select the small apples',
@@ -87,13 +111,19 @@ export const taskLevels = [
     help: 'The class selector selects all elements with that class attribute. Elements can only have one ID, but many classes.',
     example: '<strong>.neato</strong> selects all elements with <strong>class="neato"</strong>',
     boardMarkup: `
-    <apple/>
+  <apple/>
+  <apple class="small"/>
+  <plate>
     <apple class="small"/>
-    <plate>
-      <apple class="small"/>
-    </plate>
-    <plate/>
-    `,
+  </plate>
+  <plate/>
+  `,
+    pictures: `
+  <div class="apple"></div>
+  <div class="apple__small animation-pulsing"></div>
+  <div class="plate"><div class="apple__small animation-pulsing"></div></div>
+  <div class="plate"></div>
+  `,
   },
   {
     doThis: 'Select the small oranges',
@@ -105,17 +135,24 @@ export const taskLevels = [
     example:
       '<strong>ul.important</strong> selects all <tag>ul</tag> elements that have <strong>class="important"</strong>',
     boardMarkup: `
-    <apple/>
-    <apple class="small"/>
-    <bento>
-      <orange class="small"/>
-    </bento>
-    <plate>
-      <orange/>
-    </plate>
-    <plate>
-      <orange class="small"/>
-    </plate>`,
+  <apple/>
+  <apple class="small"/>
+  <bento>
+    <orange class="small"/>
+  </bento>
+  <plate>
+    <orange/>
+  </plate>
+  <plate>
+    <orange class="small"/>
+  </plate>`,
+    pictures: `
+  <div class="apple"></div>
+  <div class="apple__small"></div>
+  <div class="bento"><div class="egg__small animation-pulsing"></div></div>
+  <div class="plate"><div class="egg"></div></div>
+  <div class="plate"><div class="egg__small animation-pulsing"></div></div>
+  `,
   },
   {
     doThis: 'Select the small oranges in the bentos',
@@ -127,20 +164,27 @@ export const taskLevels = [
     example:
       '<strong>#big.wide</strong> selects all elements with <strong>id="big"</strong> that also have <strong>class="wide"</strong>',
     boardMarkup: `
-    <bento>
-      <orange/>
-    </bento>
+  <bento>
+    <orange/>
+  </bento>
+  <orange class="small"/>
+  <bento>
     <orange class="small"/>
-    <bento>
-      <orange class="small"/>
-    </bento>
-    <bento>
-      <apple class="small"/>
-    </bento>
-    <bento>
-      <orange class="small"/>
-    </bento>
-    `,
+  </bento>
+  <bento>
+    <apple class="small"/>
+  </bento>
+  <bento>
+    <orange class="small"/>
+  </bento>
+  `,
+    pictures: `
+  <div class="bento"><div class="egg"></div></div>
+  <div class="egg__small"></div>
+  <div class="bento"><div class="egg__small animation-pulsing"></div></div>
+  <div class="bento"><div class="apple__small"></div></div>
+  <div class="bento"><div class="egg__small animation-pulsing"></div></div>
+  `,
   },
   {
     doThis: 'Select all the plates and bentos',
@@ -152,20 +196,29 @@ export const taskLevels = [
     example:
       '<strong>p, .fun</strong> selects all <tag>p</tag> elements as well as all elements with <strong>class="fun"</strong>',
     boardMarkup: `
-    <pickle class="small"/>
+  <pickle class="small"/>
+  <pickle/>
+  <plate>
     <pickle/>
-    <plate>
-      <pickle/>
-    </plate>
-    <bento>
-      <pickle/>
-    </bento>
-    <plate>
-      <pickle/>
-    </plate>
+  </plate>
+  <bento>
     <pickle/>
-    <pickle class="small"/>
-    `,
+  </bento>
+  <plate>
+    <pickle/>
+  </plate>
+  <pickle/>
+  <pickle class="small"/>
+  `,
+    pictures: `
+  <div class="pickle__small"></div>
+  <div class="pickle"></div>
+  <div class="plate animation-pulsing"><div class="pickle animation-pulsing"></div></div>
+  <div class="bento animation-pulsing"><div class="pickle animation-pulsing"></div></div>
+  <div class="plate animation-pulsing"><div class="pickle animation-pulsing"></div></div>
+  <div class="pickle"></div>
+  <div class="pickle__small"></div>
+  `,
   },
   {
     doThis: 'Select all the things!',
@@ -176,15 +229,22 @@ export const taskLevels = [
     help: 'You can select all elements with the universal selector! ',
     example: '<strong>p *</strong> selects any element inside all <tag>p</tag> elements.',
     boardMarkup: `
-    <apple/>
-    <plate>
-      <orange class="small" />
-    </plate>
-    <bento/>
-    <bento>
-      <orange/>
-    </bento>
-    <plate id="fancy"/>
-    `,
+  <apple/>
+  <plate>
+    <orange class="small" />
+  </plate>
+  <bento/>
+  <bento>
+    <orange/>
+  </bento>
+  <plate id="fancy"/>
+  `,
+    pictures: `
+    <div class="apple animation-pulsing"></div>
+    <div class="plate animation-pulsing"><div class="egg__small animation-pulsing"></div></div>
+    <div class="bento animation-pulsing"></div>
+    <div class="bento animation-pulsing"><div class="egg animation-pulsing"></div></div>
+    <div class="fancy animation-pulsing"></div>
+  `,
   },
 ];

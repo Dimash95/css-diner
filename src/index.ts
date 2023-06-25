@@ -11,7 +11,7 @@ const taskTitle = document.querySelector('.block-one__title') as HTMLElement;
 const currentLevel = 0;
 const init = (currentLevel: number) => {
   levelNumbers[currentLevel].classList.add('focus');
-  blockOne(taskLevels[currentLevel].doThis);
+  blockOne(taskLevels[currentLevel].doThis, taskLevels[currentLevel].pictures);
 };
 init(currentLevel);
 
@@ -22,8 +22,9 @@ function changeLevel() {
         levelNumbers[i].classList.remove('focus');
       }
       levelNumbers[i].classList.add('focus');
-      blockOne(taskLevels[i].doThis);
+      blockOne(taskLevels[i].doThis, taskLevels[i].pictures);
       blockTwo(taskLevels[i].selector);
+      blockThree(taskLevels[i].boardMarkup);
       blockFour(
         taskLevels[i].selectorName,
         taskLevels[i].helpTitle,
@@ -36,9 +37,12 @@ function changeLevel() {
 }
 changeLevel();
 
-function blockOne(doThis: string) {
+function blockOne(doThis: string, pictures: string | undefined) {
   taskTitle.innerHTML = doThis;
   const table = document.querySelector('.block-one__table') as HTMLElement;
+  if (pictures) {
+    table.innerHTML = pictures;
+  }
 }
 
 function blockTwo(selector: string) {
@@ -83,6 +87,24 @@ function blockTwo(selector: string) {
       setTimeout(removeShake, 500);
     }
   });
+}
+
+function blockThree(boardMarkup: string) {
+  const boardMarkupValue = document.querySelector('.boardMarkup') as HTMLDivElement;
+  let text = '';
+  const array = boardMarkup.split('');
+  for (let i = 0; i < array.length; i += 1) {
+    if (array[i] === '<') {
+      array[i] = '&lt;';
+      text += array[i];
+    } else if (array[i] === '>') {
+      array[i] = '&gt;';
+      text += array[i];
+    } else {
+      text += array[i];
+    }
+  }
+  boardMarkupValue.innerHTML = text;
 }
 
 function blockFour(
