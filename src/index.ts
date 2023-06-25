@@ -10,8 +10,27 @@ const taskTitle = document.querySelector('.block-one__title') as HTMLElement;
 
 const currentLevel = 0;
 const init = (currentLevel: number) => {
+  const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
+  const inputAnimation = (): void => {
+    if (inputValue.classList.contains('input__animation')) {
+      inputValue.classList.remove('input__animation');
+    } else {
+      inputValue.classList.add('input__animation');
+    }
+  };
+  setInterval(inputAnimation, 500);
+
   levelNumbers[currentLevel].classList.add('focus');
-  blockOne(taskLevels[currentLevel].doThis, taskLevels[currentLevel].pictures);
+  addBlockOne(taskLevels[currentLevel].doThis, taskLevels[currentLevel].pictures);
+  addBlockTwo(taskLevels[currentLevel].selector);
+  addBlockThree(taskLevels[currentLevel].boardMarkup);
+  addBlockFour(
+    taskLevels[currentLevel].selectorName,
+    taskLevels[currentLevel].helpTitle,
+    taskLevels[currentLevel].syntax,
+    taskLevels[currentLevel].help,
+    taskLevels[currentLevel].example
+  );
 };
 init(currentLevel);
 
@@ -22,10 +41,12 @@ function changeLevel() {
         levelNumbers[i].classList.remove('focus');
       }
       levelNumbers[i].classList.add('focus');
-      blockOne(taskLevels[i].doThis, taskLevels[i].pictures);
-      blockTwo(taskLevels[i].selector);
-      blockThree(taskLevels[i].boardMarkup);
-      blockFour(
+      const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
+      inputValue.innerHTML = '';
+      addBlockOne(taskLevels[i].doThis, taskLevels[i].pictures);
+      addBlockTwo(taskLevels[i].selector);
+      addBlockThree(taskLevels[i].boardMarkup);
+      addBlockFour(
         taskLevels[i].selectorName,
         taskLevels[i].helpTitle,
         taskLevels[i].syntax,
@@ -37,29 +58,17 @@ function changeLevel() {
 }
 changeLevel();
 
-function blockOne(doThis: string, pictures: string | undefined) {
+function addBlockOne(doThis: string, pictures: string) {
   taskTitle.innerHTML = doThis;
   const table = document.querySelector('.block-one__table') as HTMLElement;
-  if (pictures) {
-    table.innerHTML = pictures;
-  }
+  table.innerHTML = pictures;
 }
 
-function blockTwo(selector: string) {
+function addBlockTwo(selector: string) {
   const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
   const btnEnter = document.querySelector('.code__content__enter') as HTMLButtonElement;
   const blockTwoThree = document.querySelector('.container-block-two-three') as HTMLElement;
   const blockFourIcon = document.querySelector('.block-four__icon') as HTMLImageElement;
-
-  const inputAnimation = (): void => {
-    if (inputValue.classList.contains('input__animation')) {
-      inputValue.classList.remove('input__animation');
-    } else {
-      inputValue.classList.add('input__animation');
-    }
-  };
-
-  setInterval(inputAnimation, 500);
 
   const removeShake = (): void => {
     blockTwoThree.classList.remove('animation__shake');
@@ -89,7 +98,7 @@ function blockTwo(selector: string) {
   });
 }
 
-function blockThree(boardMarkup: string) {
+function addBlockThree(boardMarkup: string) {
   const boardMarkupValue = document.querySelector('.boardMarkup') as HTMLDivElement;
   let text = '';
   const array = boardMarkup.split('');
@@ -107,7 +116,7 @@ function blockThree(boardMarkup: string) {
   boardMarkupValue.innerHTML = text;
 }
 
-function blockFour(
+function addBlockFour(
   levelSelectorName: string,
   levelHelpTitle: string,
   levelSyntax: string,

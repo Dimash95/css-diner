@@ -9,10 +9,6 @@
   transition: 0.4s;
 }
 
-.plate:hover {
-  background-color: gray;
-}
-
 .bento {
   display: flex;
   justify-content: center;
@@ -23,10 +19,6 @@
   transition: 0.4s;
 }
 
-.bento:hover {
-  background-color: gray;
-}
-
 .fancy {
   display: flex;
   justify-content: center;
@@ -34,7 +26,7 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: rgb(72, 202, 250);
+  background-color: cyan;
   transition: 0.4s;
 }
 
@@ -46,11 +38,27 @@
   transition: 0.4s;
 }
 
-.egg {
+.apple__small {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(223, 10, 10, 0.773);
+  transition: 0.4s;
+}
+
+.orange {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: rgba(223, 109, 10, 0.924);
+  background-color: darkorange;
+  transition: 0.4s;
+}
+
+.orange__small {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: darkorange;
   transition: 0.4s;
 }
 
@@ -61,25 +69,22 @@
   transition: 0.4s;
 }
 
-.apple__small {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: rgba(223, 10, 10, 0.773);
-  transition: 0.4s;
-}
-
-.egg__small {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: rgba(223, 109, 10, 0.924);
-  transition: 0.4s;
-}
-
 .pickle__small {
   width: 10px;
   height: 25px;
   background-color: rgba(11, 125, 60, 0.924);
   transition: 0.4s;
+}
+
+.plate:hover,
+.bento:hover,
+.fancy:hover,
+.plate:hover,
+.apple:hover,
+.apple__small:hover,
+.orange:hover,
+.orange__small:hover,
+.pickle:hover,
+.pickle__small:hover {
+  background-color: gray;
 }

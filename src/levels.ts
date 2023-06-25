@@ -6,7 +6,7 @@ export const taskLevels = [
     selector: 'plate',
     syntax: 'A',
     help: 'Selects all elements of type <tag>A</tag>. Type refers to the type of tag, so <tag>div</tag>, <tag>p</tag> and <tag>ul</tag> are all different element types.',
-    example: '<strong>div</strong> selects all <tag>div</tag> elements.',
+    example: '<tag>div</tag> selects all <tag>div</tag> elements.',
     boardMarkup: `
   <plate/>
   <plate/>
@@ -22,8 +22,8 @@ export const taskLevels = [
     syntax: 'A',
     helpTitle: 'Select elements by their type',
     selectorName: 'Type Selector',
-    help: 'Selects all elements of type <strong>A</strong>. Type refers to the type of tag, so <tag>div</tag>, <tag>p</tag> and <tag>ul</tag> are all different element types.',
-    example: '<strong>div</strong> selects all <tag>div</tag> elements.',
+    help: 'Selects all elements of type <tag>A</tag>. Type refers to the type of tag, so <tag>div</tag>, <tag>p</tag> and <tag>ul</tag> are all different element types.',
+    example: '<tag>div</tag> selects all <tag>div</tag> elements.',
     boardMarkup: `
   <bento/>
   <plate/>
@@ -41,8 +41,8 @@ export const taskLevels = [
     selectorName: 'ID Selector',
     helpTitle: 'Select elements with an ID',
     syntax: '#id',
-    help: 'Selects the element with a specific <strong>id</strong>. You can also combine the ID selector with the type selector.',
-    example: '<strong>#cool</strong> selects any element with <strong>id="cool"</strong>',
+    help: 'Selects the element with a specific <tag>id</tag>. You can also combine the ID selector with the type selector.',
+    example: '<tag>#cool</tag> selects any element with <tag>id="cool"</tag>',
     boardMarkup: `
   <plate id="fancy"/>
   <plate/>
@@ -60,9 +60,9 @@ export const taskLevels = [
     doThis: 'Select the apple on the plate',
     selector: 'plate apple',
     syntax: 'A&nbsp;&nbsp;B',
-    help: 'Selects all <strong>B</strong> inside of <strong>A</strong>. <strong>B</strong> is called a descendant because it is inside of another element.',
+    help: 'Selects all <tag>B</tag> inside of <tag>A</tag>. <tag>B</tag> is called a descendant because it is inside of another element.',
     example:
-      '<strong>p&nbsp;&nbsp;strong</strong> selects all <tag>strong</tag> elements that are inside of any <tag>p</tag>',
+      '<tag>p&nbsp;&nbsp;strong</tag> selects all <tag>strong</tag> elements that are inside of any <tag>p</tag>',
     boardMarkup: `
   <bento/>
   <plate>
@@ -84,7 +84,7 @@ export const taskLevels = [
     syntax: '#id&nbsp;&nbsp;A',
     help: 'You can combine any selector with the descendent selector.',
     example:
-      '<strong>#cool&nbsp;span</strong> selects all <tag>span</tag> elements that are inside of elements with <strong>id="cool"</strong>',
+      '<tag>#cool&nbsp;span</tag> selects all <tag>span</tag> elements that are inside of elements with <tag>id="cool"</tag>',
     boardMarkup: `
   </bento>
     <orange/>
@@ -97,7 +97,7 @@ export const taskLevels = [
   </plate>
   `,
     pictures: `
-  <div class="bento"><div class="egg"></div></div>
+  <div class="bento"><div class="orange"></div></div>
   <div class="fancy"><div class="pickle animation-pulsing"></div></div>
   <div class="plate"><div class="pickle"></div></div>
   `,
@@ -109,7 +109,7 @@ export const taskLevels = [
     helpTitle: 'Select elements by their class',
     syntax: '.classname',
     help: 'The class selector selects all elements with that class attribute. Elements can only have one ID, but many classes.',
-    example: '<strong>.neato</strong> selects all elements with <strong>class="neato"</strong>',
+    example: '<tag>.neato</tag> selects all elements with <tag>class="neato"</tag>',
     boardMarkup: `
   <apple/>
   <apple class="small"/>
@@ -132,8 +132,7 @@ export const taskLevels = [
     helpTitle: 'Combine the Class Selector',
     syntax: 'A.className',
     help: 'You can combine the class selector with other selectors, like the type selector.',
-    example:
-      '<strong>ul.important</strong> selects all <tag>ul</tag> elements that have <strong>class="important"</strong>',
+    example: '<tag>ul.important</tag> selects all <tag>ul</tag> elements that have <strong>class="important"</strong>',
     boardMarkup: `
   <apple/>
   <apple class="small"/>
@@ -149,9 +148,9 @@ export const taskLevels = [
     pictures: `
   <div class="apple"></div>
   <div class="apple__small"></div>
-  <div class="bento"><div class="egg__small animation-pulsing"></div></div>
-  <div class="plate"><div class="egg"></div></div>
-  <div class="plate"><div class="egg__small animation-pulsing"></div></div>
+  <div class="bento"><div class="orange__small animation-pulsing"></div></div>
+  <div class="plate"><div class="orange"></div></div>
+  <div class="plate"><div class="orange__small animation-pulsing"></div></div>
   `,
   },
   {
@@ -162,7 +161,7 @@ export const taskLevels = [
     helpTitle: 'You can do it...',
     help: 'Combine what you learned in the last few levels to solve this one!',
     example:
-      '<strong>#big.wide</strong> selects all elements with <strong>id="big"</strong> that also have <strong>class="wide"</strong>',
+      '<tag>#big.wide</tag> selects all elements with <tag>id="big"</tag> that also have <tag>class="wide"</tag>',
     boardMarkup: `
   <bento>
     <orange/>
@@ -179,11 +178,11 @@ export const taskLevels = [
   </bento>
   `,
     pictures: `
-  <div class="bento"><div class="egg"></div></div>
-  <div class="egg__small"></div>
-  <div class="bento"><div class="egg__small animation-pulsing"></div></div>
+  <div class="bento"><div class="orange"></div></div>
+  <div class="orange__small"></div>
+  <div class="bento"><div class="orange__small animation-pulsing"></div></div>
   <div class="bento"><div class="apple__small"></div></div>
-  <div class="bento"><div class="egg__small animation-pulsing"></div></div>
+  <div class="bento"><div class="orange__small animation-pulsing"></div></div>
   `,
   },
   {
@@ -192,9 +191,8 @@ export const taskLevels = [
     selectorName: 'Comma Combinator',
     helpTitle: 'Combine, selectors, with... commas!',
     syntax: 'A, B',
-    help: 'Thanks to Shatner technology, this selects all <strong>A</strong> and <strong>B</strong> elements. You can combine any selectors this way, and you can specify more than two.',
-    example:
-      '<strong>p, .fun</strong> selects all <tag>p</tag> elements as well as all elements with <strong>class="fun"</strong>',
+    help: 'Thanks to Shatner technology, this selects all <tag>A</tag> and <tag>B</tag> elements. You can combine any selectors this way, and you can specify more than two.',
+    example: '<tag>p, .fun</tag> selects all <tag>p</tag> elements as well as all elements with <tag>class="fun"</tag>',
     boardMarkup: `
   <pickle class="small"/>
   <pickle/>
@@ -227,7 +225,7 @@ export const taskLevels = [
     helpTitle: 'You can select everything!',
     syntax: '*',
     help: 'You can select all elements with the universal selector! ',
-    example: '<strong>p *</strong> selects any element inside all <tag>p</tag> elements.',
+    example: '<tag>p *</tag> selects any element inside all <tag>p</tag> elements.',
     boardMarkup: `
   <apple/>
   <plate>
@@ -241,9 +239,9 @@ export const taskLevels = [
   `,
     pictures: `
     <div class="apple animation-pulsing"></div>
-    <div class="plate animation-pulsing"><div class="egg__small animation-pulsing"></div></div>
+    <div class="plate animation-pulsing"><div class="orange__small animation-pulsing"></div></div>
     <div class="bento animation-pulsing"></div>
-    <div class="bento animation-pulsing"><div class="egg animation-pulsing"></div></div>
+    <div class="bento animation-pulsing"><div class="orange animation-pulsing"></div></div>
     <div class="fancy animation-pulsing"></div>
   `,
   },
