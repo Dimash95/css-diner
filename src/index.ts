@@ -1,18 +1,20 @@
 import './global.css';
 import { taskLevels } from './levels-library';
 import { addBlockOne } from './components/block-1';
-// import { addBlockTwo } from './components/block-2';
 import { addBlockThree } from './components/block-3';
 import { addBlockFour } from './components/block-4';
-import { doInputAnimation } from './functions/do-input-animation';
+import { doInputAnimation } from './components/block-2/do-input-animation';
 
 doInputAnimation();
 
-let currentLevel = 0;
+const currentLevel = 0;
 
-const showCurrentLevel = (currentLevel: number | 0) => {
-  const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
-  inputValue.innerHTML = '';
+function init(currentLevel: number) {
+  showCurrentLevel(currentLevel);
+}
+init(currentLevel);
+
+function showCurrentLevel(currentLevel: number) {
   const levelNumbers = document.querySelectorAll('.lvl__number');
 
   for (let i = 0; i < levelNumbers.length; i += 1) {
@@ -21,25 +23,27 @@ const showCurrentLevel = (currentLevel: number | 0) => {
   levelNumbers[currentLevel].classList.add('focus');
 
   addBlockOne(taskLevels[currentLevel].doThis, taskLevels[currentLevel].pictures);
-  checkAnswer(taskLevels[currentLevel].selector);
+  checkAnswer(taskLevels[currentLevel].selector, currentLevel);
   addBlockThree(taskLevels[currentLevel].boardMarkup);
   addBlockFour(
+    taskLevels[currentLevel].level,
     taskLevels[currentLevel].selectorName,
     taskLevels[currentLevel].helpTitle,
     taskLevels[currentLevel].syntax,
     taskLevels[currentLevel].help,
     taskLevels[currentLevel].example
   );
-};
-showCurrentLevel(currentLevel);
+  typeCorrectSelector(taskLevels[currentLevel].selector);
+  changeLevel(currentLevel);
+}
 
-export function checkAnswer(selector: string) {
+function checkAnswer(selector: string, currentLevel: number) {
   const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
   inputValue.innerHTML = '';
   const btnEnter = document.querySelector('.code__content__enter') as HTMLButtonElement;
   const blockTwoThree = document.querySelector('.container-block-two-three') as HTMLElement;
-  const blockFourIcon = document.querySelector('.block-four__icon') as HTMLImageElement;
-  let currentLevel = 0;
+  const levelNumbers = document.querySelectorAll('.lvl__number');
+
   console.log(selector);
 
   const removeShake = (): void => {
@@ -50,10 +54,14 @@ export function checkAnswer(selector: string) {
     if (event.key === 'Enter') {
       event.preventDefault();
       if (inputValue.value === selector) {
-        // blockFourIcon.src = './assets/img/green-icon.png';
+        levelNumbers[currentLevel].classList.add('green');
+
         inputValue.value = '';
-        alert('win!');
         currentLevel += 1;
+        if (currentLevel === 10) {
+          alert('Win!');
+          return;
+        }
         showCurrentLevel(currentLevel);
       } else {
         blockTwoThree.classList.add('animation__shake');
@@ -64,8 +72,12 @@ export function checkAnswer(selector: string) {
 
   btnEnter.addEventListener('click', () => {
     if (inputValue.value === selector) {
+      inputValue.value = '';
+      levelNumbers[currentLevel].classList.add('green');
+
       alert('win');
-      blockFourIcon.src = './assets/img/green-icon.png';
+      currentLevel += 1;
+      showCurrentLevel(currentLevel);
     } else {
       blockTwoThree.classList.add('animation__shake');
       setTimeout(removeShake, 500);
@@ -73,38 +85,40 @@ export function checkAnswer(selector: string) {
   });
 }
 
-function changeLevel() {
+// Code was taken from:
+// https://www.schoolsw3.com/howto/howto_js_typewriter.php
+
+function typeCorrectSelector(selector: string) {
+  const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
+  const levelNumbers = document.querySelectorAll('.lvl__number');
+
+  const helpBtn = document.querySelector('.block-one__help') as HTMLElement;
+  let i = 0;
+
+  helpBtn.addEventListener('click', function typeAnswer() {
+    if (i < selector.length) {
+      inputValue.value += selector.charAt(i);
+      i++;
+      setTimeout(typeAnswer, 200);
+    }
+
+    levelNumbers[currentLevel].classList.add('red');
+  });
+}
+
+function changeLevel(currentLevel: number) {
   const levelNumbers = document.querySelectorAll('.lvl__number');
 
   for (let i = 0; i < levelNumbers.length; i += 1) {
     levelNumbers[i].addEventListener('click', () => {
-      for (let i = 0; i < levelNumbers.length; i += 1) {
-        levelNumbers[i].classList.remove('focus');
-      }
-      levelNumbers[i].classList.add('focus');
       const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
-      inputValue.innerHTML = '';
+      inputValue.value = '';
       currentLevel = i;
       showCurrentLevel(currentLevel);
     });
   }
 }
-changeLevel();
 
-// // Code was taken from:
-// // https://www.schoolsw3.com/howto/howto_js_typewriter.php
+// TODO: local storage
 
-// const help = document.querySelector('.block-one__help') as HTMLElement;
-// let i = 0;
-
-// help.addEventListener('click', function typeAnswer() {
-//   if (i < answer.length) {
-//     inputValue.value += answer.charAt(i);
-//     i++;
-//     setTimeout(typeAnswer, 200);
-//   }
-// });
-
-// // TODO: local storage
-
-// // TODO: start again
+// TODO: start again

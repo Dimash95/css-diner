@@ -1,10 +1,13 @@
 export function addBlockFour(
+  levelNumber: string,
   levelSelectorName: string,
   levelHelpTitle: string,
   levelSyntax: string,
   levelHelp: string,
   levelExample: string
 ) {
+  const levelsNumbers = document.querySelector('.block-four__level-numbers') as HTMLElement;
+  levelsNumbers.innerHTML = levelNumber;
   const selectorName = document.querySelector('.selector-name') as HTMLElement;
   selectorName.innerHTML = levelSelectorName;
   const helpTitle = document.querySelector('.help-title') as HTMLElement;

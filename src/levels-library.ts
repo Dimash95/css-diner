@@ -1,5 +1,6 @@
 export const taskLevels = [
   {
+    level: 'Level 1 of 10',
     helpTitle: 'Select elements by their type',
     selectorName: 'Type Selector',
     doThis: 'Select the plates',
@@ -17,6 +18,7 @@ export const taskLevels = [
   `,
   },
   {
+    level: 'Level 2 of 10',
     doThis: 'Select the bento boxes',
     selector: 'bento',
     syntax: 'A',
@@ -36,6 +38,7 @@ export const taskLevels = [
     `,
   },
   {
+    level: 'Level 3 of 10',
     doThis: 'Select the fancy plate',
     selector: '#fancy',
     selectorName: 'ID Selector',
@@ -55,6 +58,7 @@ export const taskLevels = [
   `,
   },
   {
+    level: 'Level 4 of 10',
     helpTitle: 'Select an element inside another element',
     selectorName: 'Descendant Selector',
     doThis: 'Select the apple on the plate',
@@ -77,6 +81,7 @@ export const taskLevels = [
   `,
   },
   {
+    level: 'Level 5 of 10',
     doThis: 'Select the pickle on the fancy plate',
     selector: '#fancy pickle',
     selectorName: 'Descendant Selector',
@@ -103,6 +108,7 @@ export const taskLevels = [
   `,
   },
   {
+    level: 'Level 6 of 10',
     doThis: 'Select the small apples',
     selector: '.small',
     selectorName: 'Class Selector',
@@ -126,6 +132,7 @@ export const taskLevels = [
   `,
   },
   {
+    level: 'Level 7 of 10',
     doThis: 'Select the small oranges',
     selector: 'orange.small',
     selectorName: 'Class Selector',
@@ -154,6 +161,7 @@ export const taskLevels = [
   `,
   },
   {
+    level: 'Level 8 of 10',
     doThis: 'Select the small oranges in the bentos',
     selector: 'bento orange.small',
     selectorName: 'Class Selector',
@@ -186,6 +194,7 @@ export const taskLevels = [
   `,
   },
   {
+    level: 'Level 9 of 10',
     doThis: 'Select all the plates and bentos',
     selector: 'plate,bento',
     selectorName: 'Comma Combinator',
@@ -219,6 +228,7 @@ export const taskLevels = [
   `,
   },
   {
+    level: 'Level 10 of 10',
     doThis: 'Select all the things!',
     selector: '*',
     selectorName: 'The Universal Selector',
