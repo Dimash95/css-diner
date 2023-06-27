@@ -33,3 +33,41 @@ footer {
   align-items: center;
   padding-top: 20px;
 }
+
+.github-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.github-link {
+  color: bisque;
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+.github-link:hover {
+  text-decoration: underline;
+}
+
+.rss-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.rss-link {
+  color: bisque;
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+.rss-link:hover {
+  text-decoration: underline;
+}
