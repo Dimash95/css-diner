@@ -2,7 +2,7 @@
 @import './css/block-2.css';
 @import './css/block-3.css';
 @import './css/block-4.css';
-@import './game-levels/level-0/level-0.css';
+@import './css/elements-on-table.css';
 
 body {
   box-sizing: border-box;

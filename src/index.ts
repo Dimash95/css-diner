@@ -1,28 +1,27 @@
 import './global.css';
-import { taskLevels } from './levels';
+import { taskLevels } from './levels-library';
+import { addBlockOne } from './components/block-1';
+// import { addBlockTwo } from './components/block-2';
+import { addBlockThree } from './components/block-3';
+import { addBlockFour } from './components/block-4';
+import { doInputAnimation } from './functions/do-input-animation';
 
-// * Create elements
+doInputAnimation();
 
-// const blockTwoThree = document.querySelector('.container-block-two-three') as HTMLElement;
-const levelNumbers = document.querySelectorAll('.lvl__number');
-levelNumbers[0].classList.add('focus');
-const taskTitle = document.querySelector('.block-one__title') as HTMLElement;
+let currentLevel = 0;
 
-const currentLevel = 0;
-const init = (currentLevel: number) => {
+const showCurrentLevel = (currentLevel: number | 0) => {
   const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
-  const inputAnimation = (): void => {
-    if (inputValue.classList.contains('input__animation')) {
-      inputValue.classList.remove('input__animation');
-    } else {
-      inputValue.classList.add('input__animation');
-    }
-  };
-  setInterval(inputAnimation, 500);
+  inputValue.innerHTML = '';
+  const levelNumbers = document.querySelectorAll('.lvl__number');
 
+  for (let i = 0; i < levelNumbers.length; i += 1) {
+    levelNumbers[i].classList.remove('focus');
+  }
   levelNumbers[currentLevel].classList.add('focus');
+
   addBlockOne(taskLevels[currentLevel].doThis, taskLevels[currentLevel].pictures);
-  addBlockTwo(taskLevels[currentLevel].selector);
+  checkAnswer(taskLevels[currentLevel].selector);
   addBlockThree(taskLevels[currentLevel].boardMarkup);
   addBlockFour(
     taskLevels[currentLevel].selectorName,
@@ -32,43 +31,16 @@ const init = (currentLevel: number) => {
     taskLevels[currentLevel].example
   );
 };
-init(currentLevel);
+showCurrentLevel(currentLevel);
 
-function changeLevel() {
-  for (let i = 0; i < levelNumbers.length; i += 1) {
-    levelNumbers[i].addEventListener('click', () => {
-      for (let i = 0; i < levelNumbers.length; i += 1) {
-        levelNumbers[i].classList.remove('focus');
-      }
-      levelNumbers[i].classList.add('focus');
-      const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
-      inputValue.innerHTML = '';
-      addBlockOne(taskLevels[i].doThis, taskLevels[i].pictures);
-      addBlockTwo(taskLevels[i].selector);
-      addBlockThree(taskLevels[i].boardMarkup);
-      addBlockFour(
-        taskLevels[i].selectorName,
-        taskLevels[i].helpTitle,
-        taskLevels[i].syntax,
-        taskLevels[i].help,
-        taskLevels[i].example
-      );
-    });
-  }
-}
-changeLevel();
-
-function addBlockOne(doThis: string, pictures: string) {
-  taskTitle.innerHTML = doThis;
-  const table = document.querySelector('.block-one__table') as HTMLElement;
-  table.innerHTML = pictures;
-}
-
-function addBlockTwo(selector: string) {
+export function checkAnswer(selector: string) {
   const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
+  inputValue.innerHTML = '';
   const btnEnter = document.querySelector('.code__content__enter') as HTMLButtonElement;
   const blockTwoThree = document.querySelector('.container-block-two-three') as HTMLElement;
   const blockFourIcon = document.querySelector('.block-four__icon') as HTMLImageElement;
+  let currentLevel = 0;
+  console.log(selector);
 
   const removeShake = (): void => {
     blockTwoThree.classList.remove('animation__shake');
@@ -78,8 +50,11 @@ function addBlockTwo(selector: string) {
     if (event.key === 'Enter') {
       event.preventDefault();
       if (inputValue.value === selector) {
-        alert('win');
-        blockFourIcon.src = './assets/img/green-icon.png';
+        // blockFourIcon.src = './assets/img/green-icon.png';
+        inputValue.value = '';
+        alert('win!');
+        currentLevel += 1;
+        showCurrentLevel(currentLevel);
       } else {
         blockTwoThree.classList.add('animation__shake');
         setTimeout(removeShake, 500);
@@ -98,73 +73,23 @@ function addBlockTwo(selector: string) {
   });
 }
 
-function addBlockThree(boardMarkup: string) {
-  const boardMarkupValue = document.querySelector('.boardMarkup') as HTMLDivElement;
-  let text = '';
-  const array = boardMarkup.split('');
-  for (let i = 0; i < array.length; i += 1) {
-    if (array[i] === '<') {
-      array[i] = '&lt;';
-      text += array[i];
-    } else if (array[i] === '>') {
-      array[i] = '&gt;';
-      text += array[i];
-    } else {
-      text += array[i];
-    }
+function changeLevel() {
+  const levelNumbers = document.querySelectorAll('.lvl__number');
+
+  for (let i = 0; i < levelNumbers.length; i += 1) {
+    levelNumbers[i].addEventListener('click', () => {
+      for (let i = 0; i < levelNumbers.length; i += 1) {
+        levelNumbers[i].classList.remove('focus');
+      }
+      levelNumbers[i].classList.add('focus');
+      const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
+      inputValue.innerHTML = '';
+      currentLevel = i;
+      showCurrentLevel(currentLevel);
+    });
   }
-  boardMarkupValue.innerHTML = text;
 }
-
-function addBlockFour(
-  levelSelectorName: string,
-  levelHelpTitle: string,
-  levelSyntax: string,
-  levelHelp: string,
-  levelExample: string
-) {
-  const selectorName = document.querySelector('.selector-name') as HTMLElement;
-  selectorName.innerHTML = levelSelectorName;
-  const helpTitle = document.querySelector('.help-title') as HTMLElement;
-  helpTitle.innerHTML = levelHelpTitle;
-  const syntax = document.querySelector('.syntax') as HTMLElement;
-  syntax.innerHTML = levelSyntax;
-  const help = document.querySelector('.help') as HTMLElement;
-  help.innerHTML = levelHelp;
-  const exampleContent = document.querySelector('.example-content') as HTMLElement;
-  exampleContent.innerHTML = levelExample;
-}
-// const answer = 'plate';
-// const table = document.querySelector('.block-one__table') as HTMLElement;
-// const plateOne = document.createElement('div') as HTMLElement;
-// const plateTwo = document.createElement('div') as HTMLElement;
-// plateOne.classList.add('plate');
-// plateTwo.classList.add('plate');
-// plateOne.classList.add('animation');
-// plateTwo.classList.add('animation');
-// table.appendChild(plateOne);
-// table.appendChild(plateTwo);
-
-// // * Add CSS content
-
-// const cssBox = document.querySelector('.block-two__code__content__css') as HTMLElement;
-// const cssContent = `<input class="code__content__input" type='text' placeholder="Type in a CSS selector enter" /><br />
-// {<br />
-// /* Styles would go here. */<br />
-// }<br />
-// /* <br />Type a number to skip to a level.<br />
-// Ex → "5" for level 5<br />
-// */`;
-// cssBox.innerHTML = cssContent;
-
-// const htmlBox = document.querySelector('.block-three__code__content__html') as HTMLElement;
-// const htmlContent = `&lt;div class="table"&gt;<br />
-// &nbsp;&nbsp;&lt;plate /&gt;<br />
-// &nbsp;&nbsp;&lt;plate /&gt;<br />
-// &lt;/div&gt;`;
-// htmlBox.innerHTML = htmlContent;
-
-// // * Help
+changeLevel();
 
 // // Code was taken from:
 // // https://www.schoolsw3.com/howto/howto_js_typewriter.php
