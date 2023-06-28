@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background-color: aliceblue;
   transition: 0.4s;
@@ -13,8 +13,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   background-color: rgba(144, 11, 11, 0.773);
   transition: 0.4s;
 }
@@ -23,8 +23,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background-color: cyan;
   transition: 0.4s;
@@ -87,4 +87,66 @@
 .pickle:hover,
 .pickle__small:hover {
   background-color: gray;
+}
+
+@media screen and (max-width: 1024px) {
+  .plate,
+  .bento,
+  .fancy {
+    width: 60px;
+    height: 60px;
+  }
+
+  .apple,
+  .orange {
+    width: 40px;
+    height: 40px;
+  }
+
+  .apple__small,
+  .orange__small {
+    width: 25px;
+    height: 25px;
+  }
+
+  .pickle {
+    width: 15px;
+    height: 40px;
+  }
+
+  .pickle__small {
+    width: 10px;
+    height: 25px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .plate,
+  .bento,
+  .fancy {
+    width: 50px;
+    height: 50px;
+  }
+
+  .apple,
+  .orange {
+    width: 30px;
+    height: 30px;
+  }
+
+  .apple__small,
+  .orange__small {
+    width: 20px;
+    height: 20px;
+  }
+
+  .pickle {
+    width: 15px;
+    height: 40px;
+  }
+
+  .pickle__small {
+    width: 10px;
+    height: 25px;
+  }
 }

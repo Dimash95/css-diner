@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 30vw;
+  height: width / 5;
 }
 
 .block-three__title {

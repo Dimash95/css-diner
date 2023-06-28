@@ -6,7 +6,8 @@
 }
 
 .block-one__title {
-  font-size: 35px;
+  margin: 0;
+  font-size: 4vmax;
 }
 
 .block-one__help {
@@ -18,8 +19,8 @@
   justify-content: space-around;
   align-items: center;
   background-color: peru;
-  height: 120px;
-  width: 400px;
+  width: 20vw;
+  /* height: width; */
 }
 
 .block-one__help {
