@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   width: 30vw;
-  height: width / 5;
 }
 
 .block-three__title {
@@ -17,14 +16,15 @@
 
 .block-three__code__numbers {
   text-align: end;
-  padding: 10px;
+  padding: 1vw;
   background-color: rgb(38, 38, 39);
   border: 0.2px solid aliceblue;
   border-color: rgb(122, 122, 122);
   color: rgb(122, 122, 122);
 }
+
 .block-three__code__content {
-  padding: 10px;
+  padding: 1vw;
   width: 100%;
   background-color: rgb(38, 38, 39);
   border-top: 1px solid aliceblue;

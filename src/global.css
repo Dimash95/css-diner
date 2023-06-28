@@ -1,3 +1,4 @@
+@import './css/header.css';
 @import './css/block-1.css';
 @import './css/block-2.css';
 @import './css/block-3.css';
@@ -6,6 +7,7 @@
 
 body {
   box-sizing: border-box;
+  background-color: rgb(73, 46, 46);
   margin: 0;
   color: bisque;
   font-size: 1vw;
@@ -23,27 +25,15 @@ body {
   }
 } */
 
-.container {
-  display: flex;
-  background-color: rgb(73, 46, 46);
-}
-
-.header {
-  width: 90%;
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-
 main {
   position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(73, 46, 46);
+  /* background-color: rgb(73, 46, 46); */
   width: 75vw;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 footer {
@@ -54,44 +44,6 @@ footer {
   justify-content: center;
   align-items: center;
   padding-top: 20px;
-}
-
-.github-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
-.github-link {
-  color: bisque;
-  text-decoration: none;
-  transition: 0.4s;
-}
-
-.github-link:hover {
-  text-decoration: underline;
-}
-
-.rss-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
-.rss-link {
-  color: bisque;
-  text-decoration: none;
-  transition: 0.4s;
-}
-
-.rss-link:hover {
-  text-decoration: underline;
 }
 
 /* @media screen and (max-width: 700px) {

@@ -5,7 +5,7 @@
   right: 0;
   height: 100vh;
   background-color: rgb(31, 31, 31);
-  padding: 10px;
+  padding: 1vh;
 }
 
 .block-four__title-box {
@@ -16,22 +16,15 @@
 .lvl__number {
   cursor: pointer;
   background-color: bisque;
+  font-size: 1vw;
 }
 
 .lvl__number:hover {
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 .focus {
-  padding: 5px 10px;
-}
-
-.btn {
-  cursor: pointer;
-  border: none;
-  background-color: rgb(31, 31, 31);
-  font-size: 30px;
-  color: bisque;
+  padding: 0.3vw 0.8vw;
 }
 
 tag {
@@ -42,43 +35,13 @@ tag {
 
 .btn-new-game {
   cursor: pointer;
-  margin-top: 20px;
-  font-size: 18px;
+  margin-top: 2vw;
+  font-size: 1.5vw;
   background-color: bisque;
 }
 
 .btn-new-game:hover {
-  opacity: 0.9;
-}
-
-.green-icon:after {
-  content: '';
-  height: 60px;
-  width: 60px;
-  background: url(../assets/img/green-icon.png) no-repeat;
-  position: absolute;
-  margin-left: 10px;
-  background-size: 21px;
-}
-
-.black-icon:after {
-  content: '';
-  height: 60px;
-  width: 60px;
-  background: url(../assets/img/black-icon.png) no-repeat;
-  position: absolute;
-  margin-left: 10px;
-  background-size: 21px;
-}
-
-.green-icon:after {
-  content: '';
-  height: 60px;
-  width: 60px;
-  background: url(../assets/img/yellow-icon.png) no-repeat;
-  position: absolute;
-  margin-left: 10px;
-  background-size: 21px;
+  opacity: 0.8;
 }
 
 .green {

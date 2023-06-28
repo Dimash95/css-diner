@@ -1,5 +1,5 @@
 .container-block-two-three {
-  margin-top: 30px;
+  margin-top: 3vw;
   display: flex;
   justify-content: center;
 }
@@ -20,7 +20,7 @@
 
 .block-two__code__numbers {
   text-align: end;
-  padding: 10px;
+  padding: 1vw;
   background-color: rgb(209, 208, 207);
   color: rgb(72, 69, 69);
 }
@@ -29,7 +29,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 10px;
+  padding: 1vw;
   background-color: aliceblue;
   color: black;
 }
@@ -38,6 +38,7 @@
   border: none;
   color: black;
   background-color: aliceblue;
+  font-size: 1vw;
 }
 
 .code__content__input::-webkit-input-placeholder {
@@ -59,9 +60,11 @@
   margin: 0;
   color: gray;
 }
+
 .code__content__enter {
   cursor: pointer;
-  height: 30px;
+  height: 2vw;
+  font-size: 1vw;
 }
 
 .animation__shake {
@@ -114,6 +117,3 @@
 .boardMarkup {
   padding: 0;
 }
-
-/* @media screen and (max-width: 700px) {
-} */
