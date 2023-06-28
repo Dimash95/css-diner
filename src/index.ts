@@ -2,8 +2,9 @@ import './global.css';
 import { taskLevels } from './levels-library';
 import { addBlockOne } from './components/block-1';
 import { addBlockThree } from './components/block-3';
-import { addBlockFour } from './components/block-4';
+import { addBlockFour } from './components/block-4/block-4';
 import { doInputAnimation } from './components/block-2/do-input-animation';
+import { clearTextEditor } from './components/block-2/clear-input';
 
 doInputAnimation();
 
@@ -11,17 +12,12 @@ const currentLevel = 0;
 
 function init(currentLevel: number) {
   showCurrentLevel(currentLevel);
+  listenToLevelNavigationButtons();
 }
 init(currentLevel);
 
 function showCurrentLevel(currentLevel: number) {
-  const levelNumbers = document.querySelectorAll('.lvl__number');
-
-  for (let i = 0; i < levelNumbers.length; i += 1) {
-    levelNumbers[i].classList.remove('focus');
-  }
-  levelNumbers[currentLevel].classList.add('focus');
-
+  changeButtonsStyle(currentLevel);
   addBlockOne(taskLevels[currentLevel].doThis, taskLevels[currentLevel].pictures);
   checkAnswer(taskLevels[currentLevel].selector, currentLevel);
   addBlockThree(taskLevels[currentLevel].boardMarkup);
@@ -33,14 +29,20 @@ function showCurrentLevel(currentLevel: number) {
     taskLevels[currentLevel].help,
     taskLevels[currentLevel].example
   );
-  typeCorrectSelector(taskLevels[currentLevel].selector);
-  changeLevel(currentLevel);
+  typeCorrectSelector(taskLevels[currentLevel].selector, currentLevel);
+}
+
+function changeButtonsStyle(currentLevel: number) {
+  const levelNumbers = document.querySelectorAll('.lvl__number');
+  levelNumbers.forEach((button) => button.classList.remove('focus'));
+  levelNumbers[currentLevel].classList.add('focus');
 }
 
 function checkAnswer(selector: string, currentLevel: number) {
   const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
   inputValue.innerHTML = '';
-  const btnEnter = document.querySelector('.code__content__enter') as HTMLButtonElement;
+
+  const buttonEnter = document.querySelector('.code__content__enter') as HTMLButtonElement;
   const blockTwoThree = document.querySelector('.container-block-two-three') as HTMLElement;
   const levelNumbers = document.querySelectorAll('.lvl__number');
 
@@ -56,13 +58,13 @@ function checkAnswer(selector: string, currentLevel: number) {
       if (inputValue.value === selector) {
         levelNumbers[currentLevel].classList.add('green');
 
-        inputValue.value = '';
         currentLevel += 1;
         if (currentLevel === 10) {
           alert('Win!');
           return;
         }
         showCurrentLevel(currentLevel);
+        clearTextEditor();
       } else {
         blockTwoThree.classList.add('animation__shake');
         setTimeout(removeShake, 500);
@@ -70,14 +72,16 @@ function checkAnswer(selector: string, currentLevel: number) {
     }
   });
 
-  btnEnter.addEventListener('click', () => {
+  buttonEnter.addEventListener('click', () => {
     if (inputValue.value === selector) {
-      inputValue.value = '';
       levelNumbers[currentLevel].classList.add('green');
 
       alert('win');
+
       currentLevel += 1;
       showCurrentLevel(currentLevel);
+
+      clearTextEditor();
     } else {
       blockTwoThree.classList.add('animation__shake');
       setTimeout(removeShake, 500);
@@ -88,7 +92,7 @@ function checkAnswer(selector: string, currentLevel: number) {
 // Code was taken from:
 // https://www.schoolsw3.com/howto/howto_js_typewriter.php
 
-function typeCorrectSelector(selector: string) {
+function typeCorrectSelector(selector: string, currentLevel: number) {
   const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
   const levelNumbers = document.querySelectorAll('.lvl__number');
 
@@ -103,20 +107,20 @@ function typeCorrectSelector(selector: string) {
     }
 
     levelNumbers[currentLevel].classList.add('red');
+    currentLevel += 1;
+    showCurrentLevel(currentLevel);
   });
 }
 
-function changeLevel(currentLevel: number) {
-  const levelNumbers = document.querySelectorAll('.lvl__number');
+function listenToLevelNavigationButtons() {
+  const levelNavigationButtons = document.querySelectorAll('.lvl__number');
 
-  for (let i = 0; i < levelNumbers.length; i += 1) {
-    levelNumbers[i].addEventListener('click', () => {
-      const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
-      inputValue.value = '';
-      currentLevel = i;
-      showCurrentLevel(currentLevel);
+  levelNavigationButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      showCurrentLevel(index);
+      clearTextEditor();
     });
-  }
+  });
 }
 
 // TODO: local storage
