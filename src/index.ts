@@ -8,13 +8,23 @@ import { clearTextEditor } from './components/block-2/clear-input';
 
 doInputAnimation();
 
-const currentLevel = 0;
-
-function init(currentLevel: number) {
-  showCurrentLevel(currentLevel);
+function init() {
+  showCurrentLevel(0);
   listenToLevelNavigationButtons();
 }
-init(currentLevel);
+init();
+
+function setStorage(currentLevel: number) {
+  localStorage.setItem('currentLevel', currentLevel.toString());
+
+  getStorage();
+}
+
+function getStorage() {
+  const currentLevel = +(localStorage.getItem('currentLevel') ?? 0);
+  showCurrentLevel(currentLevel);
+}
+getStorage();
 
 function showCurrentLevel(currentLevel: number) {
   clearTextEditor();
@@ -56,13 +66,15 @@ function checkAnswer(selector: string, currentLevel: number) {
       event.preventDefault();
       if (inputValue.value === selector) {
         levelNumbers[currentLevel].classList.add('green');
+        console.log(levelNumbers);
 
         currentLevel += 1;
         if (currentLevel === 10) {
           alert('Victory!');
           return;
         }
-        showCurrentLevel(currentLevel);
+
+        setStorage(currentLevel);
         clearTextEditor();
       } else {
         blockTwoThree.classList.add('animation__shake');
@@ -80,7 +92,8 @@ function checkAnswer(selector: string, currentLevel: number) {
         alert('Victory!');
         return;
       }
-      showCurrentLevel(currentLevel);
+
+      setStorage(currentLevel);
       clearTextEditor();
     } else {
       blockTwoThree.classList.add('animation__shake');
@@ -89,8 +102,8 @@ function checkAnswer(selector: string, currentLevel: number) {
   });
 }
 
-// Code was taken from:
-// https://www.schoolsw3.com/howto/howto_js_typewriter.php
+// ! Кнопка Help не правильно рисует кнопки уровней
+// ! Эффектом печати текста
 
 function typeCorrectSelector(selector: string, currentLevel: number) {
   const helpButton = document.querySelector('.block-one__help') as HTMLElement;
@@ -111,7 +124,7 @@ function typeCorrectSelector(selector: string, currentLevel: number) {
       setTimeout(() => alert('Victory!'), 1000);
       return;
     } else {
-      setTimeout(() => showCurrentLevel(currentLevel), 2000);
+      setTimeout(() => setStorage(currentLevel), 2000);
     }
   }
 
@@ -124,12 +137,18 @@ function listenToLevelNavigationButtons() {
 
   levelNavigationButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
-      showCurrentLevel(index);
+      setStorage(index);
       clearTextEditor();
     });
   });
 }
 
-// TODO: local storage
+function startNewGame() {
+  const newGameButton = document.querySelector('.btn-new-game') as HTMLElement;
 
-// TODO: start again
+  newGameButton.addEventListener('click', () => {
+    localStorage.clear();
+    showCurrentLevel(0);
+  });
+}
+startNewGame();

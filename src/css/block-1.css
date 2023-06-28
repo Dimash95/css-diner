@@ -38,40 +38,25 @@
   opacity: 1.5;
 }
 
-.animation-pulsing {
-  -webkit-animation: pulsing 2s infinite;
-  animation: pulsing 2s infinite;
-}
-
 /* Code was taken from: */
-/* https://stfalcon.com/ru/blog/post/animation-css */
+/* https://codepen.io/oltika/pen/WGLZyb */
 
-@-webkit-keyframes pulsing {
-  0% {
-    -webkit-transform: scale(0.5, 0.5);
-    transform: scale(0.5, 0.5);
-  }
-  50% {
-    -webkit-transform: scale(1, 1);
-    transform: scale(1, 1);
-  }
-  100% {
-    -webkit-transform: scale(0.5, 0.5);
-    transform: scale(0.5, 0.5);
-  }
+.animation-pulsing {
+  animation: gelatine 0.5s infinite;
 }
 
-@keyframes pulsing {
-  0% {
-    -webkit-transform: scale(0.5, 0.5);
-    transform: scale(0.5, 0.5);
-  }
-  50% {
-    -webkit-transform: scale(1, 1);
+@keyframes gelatine {
+  from,
+  to {
     transform: scale(1, 1);
   }
-  100% {
-    -webkit-transform: scale(0.5, 0.5);
-    transform: scale(0.5, 0.5);
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
   }
 }
