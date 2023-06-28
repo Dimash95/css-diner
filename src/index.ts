@@ -17,6 +17,7 @@ function init(currentLevel: number) {
 init(currentLevel);
 
 function showCurrentLevel(currentLevel: number) {
+  clearTextEditor();
   changeButtonsStyle(currentLevel);
   addBlockOne(taskLevels[currentLevel].doThis, taskLevels[currentLevel].pictures);
   checkAnswer(taskLevels[currentLevel].selector, currentLevel);
@@ -46,8 +47,6 @@ function checkAnswer(selector: string, currentLevel: number) {
   const blockTwoThree = document.querySelector('.container-block-two-three') as HTMLElement;
   const levelNumbers = document.querySelectorAll('.lvl__number');
 
-  console.log(selector);
-
   const removeShake = (): void => {
     blockTwoThree.classList.remove('animation__shake');
   };
@@ -60,7 +59,7 @@ function checkAnswer(selector: string, currentLevel: number) {
 
         currentLevel += 1;
         if (currentLevel === 10) {
-          alert('Win!');
+          alert('Victory!');
           return;
         }
         showCurrentLevel(currentLevel);
@@ -76,11 +75,12 @@ function checkAnswer(selector: string, currentLevel: number) {
     if (inputValue.value === selector) {
       levelNumbers[currentLevel].classList.add('green');
 
-      alert('win');
-
       currentLevel += 1;
+      if (currentLevel === 10) {
+        alert('Victory!');
+        return;
+      }
       showCurrentLevel(currentLevel);
-
       clearTextEditor();
     } else {
       blockTwoThree.classList.add('animation__shake');
@@ -93,23 +93,30 @@ function checkAnswer(selector: string, currentLevel: number) {
 // https://www.schoolsw3.com/howto/howto_js_typewriter.php
 
 function typeCorrectSelector(selector: string, currentLevel: number) {
+  const helpButton = document.querySelector('.block-one__help') as HTMLElement;
   const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
   const levelNumbers = document.querySelectorAll('.lvl__number');
+  console.log(selector);
+  helpButton.addEventListener('click', () => clearTextEditor());
 
-  const helpBtn = document.querySelector('.block-one__help') as HTMLElement;
-  let i = 0;
-
-  helpBtn.addEventListener('click', function typeAnswer() {
-    if (i < selector.length) {
-      inputValue.value += selector.charAt(i);
-      i++;
-      setTimeout(typeAnswer, 200);
+  function typeAnswer() {
+    for (let i = 0; i < selector.length; i++) {
+      inputValue.value += selector[i];
     }
 
     levelNumbers[currentLevel].classList.add('red');
+
     currentLevel += 1;
-    showCurrentLevel(currentLevel);
-  });
+    if (currentLevel === 10) {
+      setTimeout(() => alert('Victory!'), 1000);
+      return;
+    } else {
+      setTimeout(() => showCurrentLevel(currentLevel), 2000);
+    }
+  }
+
+  helpButton.addEventListener('click', () => typeAnswer());
+  helpButton.removeEventListener('click', () => typeAnswer());
 }
 
 function listenToLevelNavigationButtons() {
