@@ -27,7 +27,7 @@
   padding: 0.3vw 0.8vw;
 }
 
-tag {
+.tag {
   display: inline-block;
   border: 1px solid gray;
   padding: 2px 3px;
@@ -50,4 +50,28 @@ tag {
 
 .red {
   background-color: darkred;
+}
+
+.selector-name {
+  font-size: 2vw;
+}
+
+.help-title {
+  font-size: 1.3vw;
+}
+
+.syntax {
+  font-size: 1.5vw;
+}
+
+.help {
+  font-size: 1.2vw;
+}
+
+.example {
+  font-size: 1.3vw;
+}
+
+.example-content {
+  font-size: 1.2vw;
 }
