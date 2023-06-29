@@ -47,6 +47,14 @@
   width: 7vh;
 }
 
+.rss-img:hover {
+  animation: gelatine 0.5s infinite;
+}
+
 .github-img {
   width: 3vh;
+}
+
+.github-img:hover {
+  animation: gelatine 0.5s infinite;
 }

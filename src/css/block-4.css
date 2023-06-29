@@ -17,6 +17,7 @@
   cursor: pointer;
   background-color: bisque;
   font-size: 1vw;
+  padding: 0.1vw 0.5vw;
 }
 
 .lvl__number:hover {
@@ -45,11 +46,11 @@
 }
 
 .green {
-  background-color: darkgreen;
+  background-color: green;
 }
 
 .red {
-  background-color: darkred;
+  background-color: rgba(144, 11, 11, 0.773);
 }
 
 .selector-name {

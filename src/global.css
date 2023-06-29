@@ -13,27 +13,13 @@ body {
   font-size: 1vw;
 }
 
-/* @media screen and (max-width: 1024px) {
-  body {
-    font-size: 1.5vh;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  body {
-    font-size: 1vh;
-  }
-} */
-
 main {
   position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* background-color: rgb(73, 46, 46); */
   width: 75vw;
-  /* height: 100vh; */
 }
 
 footer {
@@ -45,17 +31,3 @@ footer {
   align-items: center;
   padding-top: 20px;
 }
-
-/* @media screen and (max-width: 700px) {
-  aside {
-    display: none;
-  }
-
-  main {
-    width: 100vw;
-  }
-
-  footer {
-    width: 100vw;
-  }
-} */

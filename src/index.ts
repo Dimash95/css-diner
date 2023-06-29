@@ -8,11 +8,16 @@ import { clearTextEditor } from './components/block-2/clear-input';
 
 doInputAnimation();
 
+////////////////////////////////////////////////////////////////// * Init
+
 function init() {
-  showCurrentLevel(0);
+  const levelZero = 0;
+  showCurrentLevel(levelZero);
   listenToLevelNavigationButtons();
 }
 init();
+
+////////////////////////////////////////////////////////////////// * localStorage
 
 function setStorage(currentLevel: number) {
   localStorage.setItem('currentLevel', currentLevel.toString());
@@ -22,9 +27,12 @@ function setStorage(currentLevel: number) {
 
 function getStorage() {
   const currentLevel = +(localStorage.getItem('currentLevel') ?? 0);
+
   showCurrentLevel(currentLevel);
 }
 getStorage();
+
+////////////////////////////////////////////////////////////////// * Show current level page
 
 function showCurrentLevel(currentLevel: number) {
   clearTextEditor();
@@ -40,14 +48,20 @@ function showCurrentLevel(currentLevel: number) {
     taskLevels[currentLevel].help,
     taskLevels[currentLevel].example
   );
-  typeCorrectSelector(taskLevels[currentLevel].selector, currentLevel);
+  // typeCorrectSelector(taskLevels[currentLevel].selector, currentLevel);
+  const helpButton = document.querySelector('.block-one__help') as HTMLElement;
+  helpButton.addEventListener('click', () => typeAnswer(taskLevels[currentLevel].selector, currentLevel));
 }
+
+////////////////////////////////////////////////////////////////// * Button style focus
 
 function changeButtonsStyle(currentLevel: number) {
   const levelNumbers = document.querySelectorAll('.lvl__number');
   levelNumbers.forEach((button) => button.classList.remove('focus'));
   levelNumbers[currentLevel].classList.add('focus');
 }
+
+////////////////////////////////////////////////////////////////// * Check Answer
 
 function checkAnswer(selector: string, currentLevel: number) {
   const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
@@ -60,6 +74,8 @@ function checkAnswer(selector: string, currentLevel: number) {
   const removeShake = (): void => {
     blockTwoThree.classList.remove('animation__shake');
   };
+
+  ////////////////////////////////////////////////////////////////// * Enter button
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
@@ -83,6 +99,8 @@ function checkAnswer(selector: string, currentLevel: number) {
     }
   });
 
+  ////////////////////////////////////////////////////////////////// * Enter click
+
   buttonEnter.addEventListener('click', () => {
     if (inputValue.value === selector) {
       levelNumbers[currentLevel].classList.add('green');
@@ -103,34 +121,47 @@ function checkAnswer(selector: string, currentLevel: number) {
 }
 
 // ! Кнопка Help не правильно рисует кнопки уровней
-// ! Эффектом печати текста
+// ! Эффект печати текста
 
-function typeCorrectSelector(selector: string, currentLevel: number) {
-  const helpButton = document.querySelector('.block-one__help') as HTMLElement;
+////////////////////////////////////////////////////////////////// * Type Help
+
+// function typeCorrectSelector(selector: string, currentLevel: number) {
+//   const helpButton = document.querySelector('.block-one__help') as HTMLElement;
+//   const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
+//   const levelNumbers = document.querySelectorAll('.lvl__number');
+//   console.log(selector);
+//   helpButton.addEventListener('click', () => clearTextEditor());
+
+//   function typeAnswer() {
+//     inputValue.value += selector;
+//     inputValue.classList.add('title');
+//     levelNumbers[currentLevel].classList.add('red');
+
+//     currentLevel += 1;
+//     if (currentLevel === 10) {
+//       setTimeout(() => alert('Victory!'), 1000);
+//       return;
+//     } else {
+//       setTimeout(() => setStorage(currentLevel), 3000);
+//     }
+//   }
+
+//   helpButton.addEventListener('click', () => typeAnswer());
+//   helpButton.removeEventListener('click', () => typeAnswer());
+// }
+
+function typeAnswer(selector: string, currentLevel: number) {
   const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
   const levelNumbers = document.querySelectorAll('.lvl__number');
   console.log(selector);
-  helpButton.addEventListener('click', () => clearTextEditor());
 
-  function typeAnswer() {
-    for (let i = 0; i < selector.length; i++) {
-      inputValue.value += selector[i];
-    }
+  inputValue.value = selector;
+  levelNumbers[currentLevel].classList.add('red');
 
-    levelNumbers[currentLevel].classList.add('red');
-
-    currentLevel += 1;
-    if (currentLevel === 10) {
-      setTimeout(() => alert('Victory!'), 1000);
-      return;
-    } else {
-      setTimeout(() => setStorage(currentLevel), 2000);
-    }
-  }
-
-  helpButton.addEventListener('click', () => typeAnswer());
-  helpButton.removeEventListener('click', () => typeAnswer());
+  setTimeout(() => setStorage(currentLevel + 1), 3000);
 }
+
+////////////////////////////////////////////////////////////////// * Level buttons
 
 function listenToLevelNavigationButtons() {
   const levelNavigationButtons = document.querySelectorAll('.lvl__number');
@@ -143,12 +174,14 @@ function listenToLevelNavigationButtons() {
   });
 }
 
+////////////////////////////////////////////////////////////////// * Начать заново
+
 function startNewGame() {
   const newGameButton = document.querySelector('.btn-new-game') as HTMLElement;
 
   newGameButton.addEventListener('click', () => {
     localStorage.clear();
-    showCurrentLevel(0);
+    location.reload();
   });
 }
 startNewGame();
