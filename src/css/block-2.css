@@ -34,11 +34,16 @@
   color: black;
 }
 
+.input__container {
+  border: 1px solid white;
+}
+
 .code__content__input {
   border: none;
   color: black;
   background-color: aliceblue;
   font-size: 1vw;
+  /* margin: 5px; */
 }
 
 .code__content__input::-webkit-input-placeholder {
@@ -53,7 +58,7 @@
 }
 
 .input__animation {
-  background-color: lightgray;
+  border: 1px solid lightgray;
 }
 
 .code__content__text {
@@ -116,4 +121,22 @@
 }
 .boardMarkup {
   padding: 0;
+}
+
+pre {
+  margin: 0;
+}
+
+.animation__type-text {
+  width: 10ch;
+  overflow: hidden;
+  color: gray;
+  white-space: nowrap;
+  animation: printed-text 3s steps(10);
+}
+
+@keyframes printed-text {
+  from {
+    width: 0%;
+  }
 }

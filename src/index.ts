@@ -66,6 +66,7 @@ function changeButtonsStyle(currentLevel: number) {
 function checkAnswer(selector: string, currentLevel: number) {
   const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
   inputValue.innerHTML = '';
+  inputValue.classList.remove('animation__type-text');
 
   const buttonEnter = document.querySelector('.code__content__enter') as HTMLButtonElement;
   const blockTwoThree = document.querySelector('.container-block-two-three') as HTMLElement;
@@ -82,12 +83,11 @@ function checkAnswer(selector: string, currentLevel: number) {
       event.preventDefault();
       if (inputValue.value === selector) {
         levelNumbers[currentLevel].classList.add('green');
-        console.log(levelNumbers);
 
         currentLevel += 1;
         if (currentLevel === 10) {
           alert('Victory!');
-          return;
+          startNewGame();
         }
 
         setStorage(currentLevel);
@@ -108,7 +108,7 @@ function checkAnswer(selector: string, currentLevel: number) {
       currentLevel += 1;
       if (currentLevel === 10) {
         alert('Victory!');
-        return;
+        startNewGame();
       }
 
       setStorage(currentLevel);
@@ -156,9 +156,17 @@ function typeAnswer(selector: string, currentLevel: number) {
   console.log(selector);
 
   inputValue.value = selector;
-  levelNumbers[currentLevel].classList.add('red');
+  inputValue.classList.add('animation__type-text');
 
-  setTimeout(() => setStorage(currentLevel + 1), 3000);
+  levelNumbers[currentLevel].classList.add('red');
+  currentLevel += 1;
+  if (currentLevel === 10) {
+    alert('Victory!');
+    return;
+  }
+  alert('U used a help');
+  setStorage(currentLevel);
+  // setTimeout(() => setStorage(currentLevel + 1), 3000);
 }
 
 ////////////////////////////////////////////////////////////////// * Level buttons

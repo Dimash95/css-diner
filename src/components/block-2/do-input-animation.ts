@@ -1,5 +1,5 @@
 export const doInputAnimation = () => {
-  const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
+  const inputValue = document.querySelector('.input__container') as HTMLElement;
 
   const inputAnimation = (): void => {
     if (inputValue.classList.contains('input__animation')) {
