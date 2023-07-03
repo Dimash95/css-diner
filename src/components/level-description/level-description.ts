@@ -1,4 +1,4 @@
-export function addBlockFour(
+export function levelDescription(
   levelNumber: string,
   levelSelectorName: string,
   levelHelpTitle: string,

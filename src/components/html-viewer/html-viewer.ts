@@ -1,4 +1,4 @@
-export function addBlockThree(boardMarkup: string) {
+export function htmlViewer(boardMarkup: string) {
   const boardMarkupValue = document.querySelector('.boardMarkup') as HTMLDivElement;
   const array = [...boardMarkup];
   const text = array.map((e) => {
