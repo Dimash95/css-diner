@@ -1,8 +1,8 @@
 @import './css/header.css';
-@import './css/block-1.css';
-@import './css/block-2.css';
-@import './css/block-3.css';
-@import './css/block-4.css';
+@import './css/title-and-table.css';
+@import './css/css-editor.css';
+@import './css/html-viewer.css';
+@import './css/level-description.css';
 @import './css/elements-on-table.css';
 
 body {

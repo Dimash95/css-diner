@@ -1,10 +1,10 @@
 import './global.css';
 import { taskLevels } from './levels-library';
-import { addBlockOne } from './components/block-1';
-import { addBlockThree } from './components/block-3';
-import { addBlockFour } from './components/block-4/block-4';
-import { doInputAnimation } from './components/block-2/do-input-animation';
-import { clearTextEditor } from './components/block-2/clear-input';
+import { addBlockOne } from './components/title-and-table/title-and-table';
+import { addBlockThree } from './components/html-viewer/html-viewer';
+import { addBlockFour } from './components/level-description/level-description';
+import { doInputAnimation } from './components/css-editor/do-input-animation';
+import { clearTextEditor } from './components/css-editor/clear-input';
 
 doInputAnimation();
 
@@ -165,7 +165,6 @@ function typeAnswer(selector: string, currentLevel: number) {
     return;
   }
   alert('U used a help');
-  setStorage(currentLevel);
   // setTimeout(() => setStorage(currentLevel + 1), 3000);
 }
 
