@@ -1,4 +1,4 @@
-CSS Diner
+# CSS Diner
 
 Stack: Typescript, Webpack, HTML, CSS.
 
