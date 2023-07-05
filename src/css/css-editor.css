@@ -128,11 +128,11 @@ pre {
 }
 
 .animation__type-text {
-  width: 10ch;
+  width: 18ch;
   overflow: hidden;
   color: gray;
   white-space: nowrap;
-  animation: printed-text 3s steps(10);
+  animation: printed-text 3s steps(18);
 }
 
 @keyframes printed-text {
