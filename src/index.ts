@@ -29,7 +29,7 @@ function setStorage(currentLevel: number) {
 }
 
 function getStorage() {
-  const currentLevel = +(localStorage.getItem('currentLevel') ?? 0);
+  currentLevel = +(localStorage.getItem('currentLevel') ?? 0);
 
   showCurrentLevel(currentLevel);
 }
@@ -50,8 +50,10 @@ function showCurrentLevel(currentLevel: number) {
     taskLevels[currentLevel].help,
     taskLevels[currentLevel].example
   );
-  typeCorrectSelector(taskLevels[currentLevel].selector, currentLevel);
   selector = taskLevels[currentLevel].selector;
+
+  const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
+  inputValue.classList.remove('animation__type-text');
 }
 
 ////////////////////////////////////////////////////////////////// * Button style focus
@@ -103,32 +105,26 @@ function checkAnswer() {
 }
 checkAnswer();
 
-// ! Кнопка Help не правильно рисует кнопки уровней
-// ! checkAnswer работает не корректно
-
 ////////////////////////////////////////////////////////////////// * Type Help
 
-function typeCorrectSelector(selector: string, currentLevel: number) {
-  const helpButton = document.querySelector('.block-one__help') as HTMLElement;
+const helpButton = document.querySelector('.block-one__help') as HTMLElement;
+helpButton.addEventListener('click', () => clearTextEditor());
+helpButton.addEventListener('click', () => typeCorrectSelector());
+
+function typeCorrectSelector() {
   const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
   const levelNumbers = document.querySelectorAll('.lvl__number');
 
-  helpButton.removeEventListener('click', () => typeAnswer());
-  helpButton.addEventListener('click', () => clearTextEditor());
-  helpButton.addEventListener('click', () => typeAnswer());
+  inputValue.value = selector;
+  inputValue.classList.add('animation__type-text');
+  levelNumbers[currentLevel].classList.add('red');
 
-  function typeAnswer() {
-    inputValue.value = selector;
-    inputValue.classList.add('animation__type-text');
-    levelNumbers[currentLevel].classList.add('red');
-
-    currentLevel += 1;
-    if (currentLevel === 10) {
-      setTimeout(() => alert('Victory!'), 1000);
-      return;
-    } else {
-      setTimeout(() => setStorage(currentLevel), 5000);
-    }
+  currentLevel += 1;
+  if (currentLevel === 10) {
+    setTimeout(() => alert('Victory!'), 1000);
+    return;
+  } else {
+    setTimeout(() => setStorage(currentLevel), 5000);
   }
 }
 
