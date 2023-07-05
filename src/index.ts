@@ -10,8 +10,11 @@ doInputAnimation();
 
 ////////////////////////////////////////////////////////////////// * Init
 
+let currentLevel = 0;
+let selector: string;
+
 function init() {
-  const levelFirst = 0;
+  const levelFirst = currentLevel;
   showCurrentLevel(levelFirst);
   listenToLevelNavigationButtons();
 }
@@ -38,7 +41,6 @@ function showCurrentLevel(currentLevel: number) {
   clearTextEditor();
   changeButtonsStyle(currentLevel);
   titleAndTable(taskLevels[currentLevel].doThis, taskLevels[currentLevel].pictures);
-  checkAnswer(taskLevels[currentLevel].selector, currentLevel);
   htmlViewer(taskLevels[currentLevel].boardMarkup);
   levelDescription(
     taskLevels[currentLevel].level,
@@ -49,6 +51,7 @@ function showCurrentLevel(currentLevel: number) {
     taskLevels[currentLevel].example
   );
   typeCorrectSelector(taskLevels[currentLevel].selector, currentLevel);
+  selector = taskLevels[currentLevel].selector;
 }
 
 ////////////////////////////////////////////////////////////////// * Button style focus
@@ -59,14 +62,23 @@ function changeButtonsStyle(currentLevel: number) {
   levelNumbers[currentLevel].classList.add('focus');
 }
 
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    checkAnswer();
+  }
+});
+
+const buttonEnter = document.querySelector('.code__content__enter') as HTMLButtonElement;
+buttonEnter.addEventListener('click', () => checkAnswer());
+
 ////////////////////////////////////////////////////////////////// * Check Answer
 
-function checkAnswer(selector: string, currentLevel: number) {
+function checkAnswer() {
   const inputValue = document.querySelector('.code__content__input') as HTMLInputElement;
   inputValue.innerHTML = '';
   inputValue.classList.remove('animation__type-text');
 
-  const buttonEnter = document.querySelector('.code__content__enter') as HTMLButtonElement;
   const blockTwoThree = document.querySelector('.container-block-two-three') as HTMLElement;
   const levelNumbers = document.querySelectorAll('.lvl__number');
 
@@ -74,49 +86,22 @@ function checkAnswer(selector: string, currentLevel: number) {
     blockTwoThree.classList.remove('animation__shake');
   };
 
-  ////////////////////////////////////////////////////////////////// * Enter button
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      if (inputValue.value === selector) {
-        levelNumbers[currentLevel].classList.add('green');
-
-        currentLevel += 1;
-        if (currentLevel === 10) {
-          alert('Victory!');
-          return;
-        }
-
-        setStorage(currentLevel);
-        clearTextEditor();
-      } else {
-        blockTwoThree.classList.add('animation__shake');
-        setTimeout(removeShake, 500);
-      }
-    }
-  });
-
-  ////////////////////////////////////////////////////////////////// * Enter click
-
-  buttonEnter.addEventListener('click', () => {
-    if (inputValue.value === selector) {
-      levelNumbers[currentLevel].classList.add('green');
-
-      currentLevel += 1;
-      if (currentLevel === 10) {
-        alert('Victory!');
-        return;
-      }
-
+  if (inputValue.value === selector) {
+    levelNumbers[currentLevel].classList.add('green');
+    currentLevel += 1;
+    if (currentLevel === 10) {
+      alert('Victory!');
+      return;
+    } else {
       setStorage(currentLevel);
       clearTextEditor();
-    } else {
-      blockTwoThree.classList.add('animation__shake');
-      setTimeout(removeShake, 500);
     }
-  });
+  } else {
+    blockTwoThree.classList.add('animation__shake');
+    setTimeout(removeShake, 500);
+  }
 }
+checkAnswer();
 
 // ! Кнопка Help не правильно рисует кнопки уровней
 // ! checkAnswer работает не корректно
