@@ -1,0 +1,90 @@
+.plate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4vw;
+  height: 4vw;
+  border-radius: 50%;
+  background-color: aliceblue;
+  transition: 0.4s;
+}
+
+.bento {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4vw;
+  height: 4vw;
+  background-color: rgba(144, 11, 11, 0.773);
+  transition: 0.4s;
+}
+
+.fancy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4vw;
+  height: 4vw;
+  border-radius: 50%;
+  background-color: cyan;
+  transition: 0.4s;
+}
+
+.apple {
+  width: 2vw;
+  height: 2vw;
+  border-radius: 50%;
+  background-color: rgba(223, 10, 10, 0.773);
+  transition: 0.4s;
+}
+
+.apple__small {
+  width: 1.5vw;
+  height: 1.5vw;
+  border-radius: 50%;
+  background-color: rgba(223, 10, 10, 0.773);
+  transition: 0.4s;
+}
+
+.orange {
+  width: 2vw;
+  height: 2vw;
+  border-radius: 50%;
+  background-color: darkorange;
+  transition: 0.4s;
+}
+
+.orange__small {
+  width: 1.5vw;
+  height: 1.5vw;
+  border-radius: 50%;
+  background-color: darkorange;
+  transition: 0.4s;
+}
+
+.pickle {
+  width: 1vw;
+  height: 3vw;
+  background-color: rgba(11, 125, 60, 0.924);
+  transition: 0.4s;
+}
+
+.pickle__small {
+  width: 1vw;
+  height: 2vw;
+  background-color: rgba(11, 125, 60, 0.924);
+  transition: 0.4s;
+}
+
+.plate:hover,
+.bento:hover,
+.fancy:hover,
+.plate:hover,
+.apple:hover,
+.apple__small:hover,
+.orange:hover,
+.orange__small:hover,
+.pickle:hover,
+.pickle__small:hover {
+  background-color: gray;
+}

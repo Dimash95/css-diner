@@ -1,0 +1,60 @@
+.header {
+  width: 90%;
+  margin-top: 1vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.github-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.github-link {
+  color: bisque;
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+.github-link:hover {
+  text-decoration: underline;
+}
+
+.rss-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.rss-link {
+  color: bisque;
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+.rss-link:hover {
+  text-decoration: underline;
+}
+
+.rss-img {
+  width: 7vh;
+}
+
+.rss-img:hover {
+  animation: gelatine 0.5s infinite;
+}
+
+.github-img {
+  width: 3vh;
+}
+
+.github-img:hover {
+  animation: gelatine 0.5s infinite;
+}

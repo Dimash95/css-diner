@@ -1,0 +1,62 @@
+.block-one {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.block-one__title {
+  margin: 0;
+  font-size: 3vw;
+}
+
+.block-one__help {
+  font-size: 1.5vw;
+}
+
+.block-one__table__container {
+  background-color: peru;
+}
+
+.block-one__table {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 24vw;
+  height: 7vw;
+  padding: 0.5vw;
+}
+
+.block-one__help {
+  cursor: pointer;
+}
+
+.block-one__help:hover {
+  opacity: 0.8;
+}
+.block-one__help:active {
+  opacity: 1.5;
+}
+
+/* Code was taken from: */
+/* https://codepen.io/oltika/pen/WGLZyb */
+
+.animation-pulsing {
+  animation: gelatine 0.5s infinite;
+}
+
+@keyframes gelatine {
+  from,
+  to {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}

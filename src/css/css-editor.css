@@ -1,0 +1,142 @@
+.container-block-two-three {
+  margin-top: 3vw;
+  display: flex;
+  justify-content: center;
+}
+
+.block-two {
+  width: 30vw;
+}
+
+.block-two__title {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(50, 49, 49);
+}
+
+.block-two__code {
+  display: flex;
+}
+
+.block-two__code__numbers {
+  text-align: end;
+  padding: 1vw;
+  background-color: rgb(209, 208, 207);
+  color: rgb(72, 69, 69);
+}
+
+.block-two__code__content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1vw;
+  background-color: aliceblue;
+  color: black;
+}
+
+.input__container {
+  border: 1px solid white;
+}
+
+.code__content__input {
+  border: none;
+  color: black;
+  background-color: aliceblue;
+  font-size: 1vw;
+  /* margin: 5px; */
+}
+
+.code__content__input::-webkit-input-placeholder {
+  color: black;
+}
+
+.code__content__input:active,
+:hover,
+:focus {
+  outline: 0;
+  outline-offset: 0;
+}
+
+.input__animation {
+  border: 1px solid lightgray;
+}
+
+.code__content__text {
+  margin: 0;
+  color: gray;
+}
+
+.code__content__enter {
+  cursor: pointer;
+  height: 2vw;
+  font-size: 1vw;
+}
+
+.animation__shake {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+
+/* Code was taken from: */
+/* https://www.schoolsw3.com/howto/howto_css_shake_image.php */
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+.block-three__code__content__div {
+  margin: 0;
+}
+.boardMarkup {
+  padding: 0;
+}
+
+pre {
+  margin: 0;
+}
+
+.animation__type-text {
+  width: 18ch;
+  overflow: hidden;
+  color: gray;
+  white-space: nowrap;
+  animation: printed-text 3s steps(18);
+}
+
+@keyframes printed-text {
+  from {
+    width: 0%;
+  }
+}
